@@ -40,9 +40,12 @@ for(i in unique(spectra$sample)){
 
 }
 
-
-library(dplyr)
+if(!require("dplyr")){
+  install.packages("dplyr")
+}
 ```
+
+    Loading required package: dplyr
 
 
     Attaching package: 'dplyr'
@@ -56,6 +59,8 @@ library(dplyr)
         intersect, setdiff, setequal, union
 
 ``` r
+library(dplyr)
+
 spec<- spectra %>% 
   group_by(fluor, status, V3) %>% 
   summarise(emission=mean(V4))

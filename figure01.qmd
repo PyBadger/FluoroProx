@@ -42,8 +42,11 @@ for(i in unique(spectra$sample)){
 
 }
 
-
+if(!require("dplyr")){
+  install.packages("dplyr")
+}
 library(dplyr)
+
 spec<- spectra %>% 
   group_by(fluor, status, V3) %>% 
   summarise(emission=mean(V4))
